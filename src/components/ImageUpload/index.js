@@ -2,6 +2,8 @@ import './index.css'
 import {Component} from 'react'
 import axios from 'axios'
 
+import Cookies from 'js-cookie'
+
 class ImageUpload extends Component {
   state = {
     selectedFile: '',
@@ -23,7 +25,6 @@ class ImageUpload extends Component {
   uploadImage = async event => {
     event.preventDefault()
     const {selectedFile} = this.state
-    console.log(selectedFile.split(',')[1])
     const base64Data1 = selectedFile.split(',')[1]
     const url = 'https://developer.lifeofgirl.org/api/v2/imageUpload'
 
@@ -34,8 +35,16 @@ class ImageUpload extends Component {
         // receive two parameter endpoint url ,form data
       })
       .then(res => {
-        // then print response status
-        console.warn(res.data)
+        if (res.data.status === 'success') {
+          const {imageUrl} = res.data
+
+          // console.log(imageUrl)
+          Cookies.set('imageUrl', imageUrl, {
+            expires: 30,
+          })
+          const {history} = this.props
+          history.push('/createPost')
+        }
       })
   }
 

@@ -1,0 +1,36 @@
+.create-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 60vh;
+  border-radius: 30px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 20px;
+  border: 1px solid blue;
+  width: 60%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+}
+textarea {
+  width: 80%;
+  border-radius: 10px;
+}
+.sb-button {
+  background-color: blue;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+}

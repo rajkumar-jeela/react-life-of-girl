@@ -2,21 +2,19 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import './index.css'
 
-class CreatePost extends Component {
+class EditPost extends Component {
   state = {
     text: '',
-    imageUrl: Cookies.get('imageUrl'),
+    imageUrl: '',
   }
 
   submitProfile = async event => {
     event.preventDefault()
-
     const {text, imageUrl} = this.state
     const token = Cookies.get('token')
-    console.log(token)
+
     const userDetails = {text, imageUrl}
-    console.log(userDetails)
-    const url = 'https://logathon-posts.herokuapp.com/createPost'
+    const url = 'https://logathon-posts.herokuapp.com/editPost'
     const options = {
       method: 'POST',
       headers: {
@@ -27,6 +25,9 @@ class CreatePost extends Component {
     }
     const response = await fetch(url, options)
     console.log(response)
+
+    const data = await response.json()
+    console.log(data)
   }
 
   onChangeText = event => {
@@ -41,14 +42,16 @@ class CreatePost extends Component {
       <>
         <div className="bg-container">
           <div className="card">
-            <h1 className="heading">Create Post</h1>
+            <h1 className="heading">Update/Edit Post</h1>
             <form className="create-container" onSubmit={this.submitProfile}>
               <input type="text" value={text} onChange={this.onChangeText} />
 
-              <textarea rows="4" cols="50" defaultValue={imageUrl} />
+              <textarea rows="4" cols="50">
+                {imageUrl}
+              </textarea>
 
               <button type="submit" className="sb-button">
-                Create
+                Update
               </button>
             </form>
           </div>
@@ -58,4 +61,4 @@ class CreatePost extends Component {
   }
 }
 
-export default CreatePost
+export default EditPost
