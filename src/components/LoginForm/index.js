@@ -22,12 +22,9 @@ class LoginForm extends Component {
   }
 
   onSubmitSuccess = token => {
-    const {history} = this.props
-
     Cookies.set('token', token, {
       expires: 30,
     })
-    history.replace('/login')
   }
 
   onSubmitFailure = errorMsg => {

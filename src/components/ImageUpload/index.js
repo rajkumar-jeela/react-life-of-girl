@@ -7,7 +7,7 @@ class ImageUpload extends Component {
     selectedFile: '',
   }
 
-  handleInputChange(event) {
+  handleInputChange = event => {
     const {files} = event.target
     const reader = new FileReader()
     reader.readAsDataURL(files[0])
@@ -15,22 +15,34 @@ class ImageUpload extends Component {
       this.setState({
         selectedFile: e.target.result,
       })
-      submit(event) {
-    event.preventDefault()
-
-    console.log(this.state)
-  }
     }
   }
 
   handleInputChange = this.handleInputChange.bind(this)
 
-  
+  uploadImage = async event => {
+    event.preventDefault()
+    const {selectedFile} = this.state
+    console.log(selectedFile.split(',')[1])
+    const base64Data1 = selectedFile.split(',')[1]
+    const url = 'https://developer.lifeofgirl.org/api/v2/imageUpload'
+
+    const formData = {base64Data: base64Data1}
+
+    axios
+      .post(url, formData, {
+        // receive two parameter endpoint url ,form data
+      })
+      .then(res => {
+        // then print response status
+        console.warn(res.data)
+      })
+  }
 
   render() {
     return (
       <div className="login-form-container">
-        <form className="form-container" onSubmit={this.submit}>
+        <form className="form-container" onSubmit={this.uploadImage}>
           <input type="file" onChange={this.handleInputChange} />
           <button type="submit" className="login-button">
             Upload
