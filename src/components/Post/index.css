@@ -1,0 +1,46 @@
+.todo-list-item {
+  width: 300px;
+  border: 1px solid #4b4453;
+  list-style: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 20px 30px;
+  border-left: 15px solid #00896f;
+  margin: 20px;
+  display: flex;
+  font-size: 1.1rem;
+  transition: all 0.4s ease-in-out;
+  color: white;
+}
+
+.todo-list-item:hover {
+  background-color: #0e3f36;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #f19224;
+}
+
+.todo-para {
+  color: inherit;
+  font-size: inherit;
+  flex: 4;
+}
+
+.todo-delete {
+  border: 2px solid #4b4453;
+  padding: 5px;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  align-self: flex-end;
+  border-radius: 5px;
+  margin-left: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.todo-delete:hover {
+  background-color: #c71111;
+  transform: scale(1.2);
+}

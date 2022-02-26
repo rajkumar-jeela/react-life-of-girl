@@ -1,20 +1,25 @@
-import {Component} from 'react'
+/* import {Component} from 'react'
 import Cookies from 'js-cookie'
 import './index.css'
+import Post from '../Post'
 
-class EditPost extends Component {
+class ListsOfPosts extends Component {
   state = {
-    text: '',
-    imageUrl: '',
+    userList: [(text: ''), (imageUrl: '')],
   }
 
-  submitProfile = async event => {
+  onClickDeletePost = postId => {
+    const {userList} = this.state
+    const newList = userList.filter(eachItem => eachItem !== postId)
+    this.setState({userList: newList})
+  }
+
+  getProfile = async event => {
     event.preventDefault()
-    const {text, imageUrl} = this.state
+
     const token = Cookies.get('token')
 
-    const userDetails = {text, imageUrl}
-    const url = 'https://logathon-signup.herokuapp.com/user/profile'
+    const url = 'https://logathon-posts-list.herokuapp.com/getPost'
     const options = {
       method: 'GET',
       headers: {
@@ -29,13 +34,8 @@ class EditPost extends Component {
     console.log(data)
   }
 
-  onChangeText = event => {
-    this.setState({text: event.target.value})
-    console.log(event.target.value)
-  }
-
   render() {
-    const {text, imageUrl} = this.state
+    const {userList} = this.state
 
     return (
       <>
@@ -50,25 +50,20 @@ class EditPost extends Component {
             </button>
           </div>
         </div>
-        <div className="bg-container">
-          <div className="card">
-            <h1 className="heading">List Of Posts</h1>
-            <form className="create-container" onSubmit={this.submitProfile}>
-              <input type="text" value={text} onChange={this.onChangeText} />
-
-              <textarea rows="4" cols="50">
-                {imageUrl}
-              </textarea>
-
-              <button type="submit" className="sb-button">
-                Update
-              </button>
-            </form>
-          </div>
-        </div>
+        <ul className="">
+          {this.getProfile}
+          {userList.map(eachItem => (
+            <Post
+              itemDetails={eachItem}
+              key={eachItem.postId}
+              onClickDeletePost={this.onClickDeletePost}
+            />
+          ))}
+        </ul>
       </>
     )
   }
 }
 
-export default EditPost
+export default ListsOfPosts
+*/

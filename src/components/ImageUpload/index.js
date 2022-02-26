@@ -50,14 +50,27 @@ class ImageUpload extends Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form className="form-container" onSubmit={this.uploadImage}>
-          <input type="file" onChange={this.handleInputChange} />
-          <button type="submit" className="login-button">
-            Upload
-          </button>
-        </form>
-      </div>
+      <>
+        <div className="head-container">
+          <h1 className="form-heading">TEAM NAME</h1>
+          <div>
+            <button type="button" className="button-outline opacity">
+              WALLET
+            </button>
+            <button type="button" className="button-outline">
+              SIGN UP
+            </button>
+          </div>
+        </div>
+        <div className="login-form-container">
+          <form className="form-container" onSubmit={this.uploadImage}>
+            <input type="file" onChange={this.handleInputChange} />
+            <button type="submit" className="login-button">
+              Upload
+            </button>
+          </form>
+        </div>
+      </>
     )
   }
 }
