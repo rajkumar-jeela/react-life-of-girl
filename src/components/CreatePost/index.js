@@ -21,17 +21,18 @@ class CreatePost extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        token: `${token}`,
       },
       body: JSON.stringify(userDetails),
     }
     const response = await fetch(url, options)
     console.log(response)
+    const {history} = this.props
+    history.replace('/editPost')
   }
 
   onChangeText = event => {
     this.setState({text: event.target.value})
-    console.log(event.target.value)
   }
 
   render() {
@@ -39,6 +40,17 @@ class CreatePost extends Component {
 
     return (
       <>
+        <div className="head-container">
+          <h1 className="form-heading">TEAM NAME</h1>
+          <div>
+            <button type="button" className="button-outline opacity">
+              WALLET
+            </button>
+            <button type="button" className="button-outline">
+              SIGN UP
+            </button>
+          </div>
+        </div>
         <div className="bg-container">
           <div className="card">
             <h1 className="heading">Create Post</h1>

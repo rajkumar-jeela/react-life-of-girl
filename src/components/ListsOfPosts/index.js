@@ -4,27 +4,23 @@ import './index.css'
 
 class EditPost extends Component {
   state = {
-    postId: 1,
     text: '',
-    imageUrl: Cookies.get('imageUrl'),
+    imageUrl: '',
   }
 
   submitProfile = async event => {
     event.preventDefault()
-    const {postId, text, imageUrl} = this.state
-    this.setState(prevState => ({postId: prevState.postId + 1}))
-    console.log(postId)
+    const {text, imageUrl} = this.state
     const token = Cookies.get('token')
 
-    const userDetails = {postId, text, imageUrl}
-    const url = 'https://logathon-posts.herokuapp.com/editPost'
+    const userDetails = {text, imageUrl}
+    const url = 'https://logathon-signup.herokuapp.com/user/profile'
     const options = {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         token: `${token}`,
       },
-      body: JSON.stringify(userDetails),
     }
     const response = await fetch(url, options)
     console.log(response)
@@ -35,6 +31,7 @@ class EditPost extends Component {
 
   onChangeText = event => {
     this.setState({text: event.target.value})
+    console.log(event.target.value)
   }
 
   render() {
@@ -55,7 +52,7 @@ class EditPost extends Component {
         </div>
         <div className="bg-container">
           <div className="card">
-            <h1 className="heading">Update/Edit Post</h1>
+            <h1 className="heading">List Of Posts</h1>
             <form className="create-container" onSubmit={this.submitProfile}>
               <input type="text" value={text} onChange={this.onChangeText} />
 

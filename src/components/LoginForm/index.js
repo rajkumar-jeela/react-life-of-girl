@@ -25,6 +25,8 @@ class LoginForm extends Component {
     Cookies.set('token', token, {
       expires: 30,
     })
+    const {history} = this.props
+    history.replace('/imageUpload')
   }
 
   onSubmitFailure = errorMsg => {
@@ -92,21 +94,34 @@ class LoginForm extends Component {
 
     if (token !== undefined) {
       console.log(token)
-      return <Redirect to="/createPost" />
+      return <Redirect to="/imageUpload" />
     }
 
     return (
-      <div className="login-form-container">
-        <form className="form-container" onSubmit={this.submitForm}>
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
+      <>
+        <div className="head-container">
+          <h1 className="form-heading">TEAM NAME</h1>
+          <div>
+            <button type="button" className="button-outline">
+              SIGNIN
+            </button>
+            <button type="button" className="button">
+              SIGN UP
+            </button>
+          </div>
+        </div>
+        <div className="login-form-container">
+          <form className="form-container" onSubmit={this.submitForm}>
+            <div className="input-container">{this.renderUsernameField()}</div>
+            <div className="input-container">{this.renderPasswordField()}</div>
 
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
-        </form>
-      </div>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+          </form>
+        </div>
+      </>
     )
   }
 }

@@ -7,6 +7,7 @@ import CreatePost from './components/CreatePost'
 import SignUp from './components/SignUp'
 import ImageUpload from './components/ImageUpload'
 import EditPost from './components/EditPost'
+import ListOfPosts from './components/ListsOfPosts'
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => (
       <Route exact path="/createPost" component={CreatePost} />
       <Route exact path="/imageUpload" component={ImageUpload} />
       <Route exact path="/editPost" component={EditPost} />
+      <Route exact path="/listOfPosts" component={ListOfPosts} />
     </Switch>
   </BrowserRouter>
 )

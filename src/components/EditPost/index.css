@@ -1,3 +1,35 @@
+.button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+.button-outline {
+  color: #ffffff;
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+.form-heading {
+  font-family: 'Roboto';
+  font-size: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.head-container {
+  background-color: #00bfff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .create-container {
   display: flex;
   flex-direction: column;
@@ -33,4 +65,8 @@ textarea {
   width: 120px;
   height: 40px;
   border-radius: 10px;
+}
+
+.opacity {
+  opacity: 0.5;
 }

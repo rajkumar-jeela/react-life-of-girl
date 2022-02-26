@@ -116,10 +116,10 @@ class SignUp extends Component {
         <div className="head-container">
           <h1 className="form-heading">TEAM NAME</h1>
           <div>
-            <button type="button" className="button-outline">
+            <button type="button" className="button-outline opacity">
               SIGNIN
             </button>
-            <button type="button" className="button">
+            <button type="button" className="button-outline">
               SIGN UP
             </button>
           </div>
@@ -131,9 +131,11 @@ class SignUp extends Component {
             <div className="input-container">{this.renderMobileField()}</div>
             <div className="input-container">{this.renderEmailField()}</div>
             <div className="input-container">{this.renderPasswordField()}</div>
-            <button type="submit" className="login-button">
-              SIGNUP
-            </button>
+            <div>
+              <button type="submit" className="login-button">
+                SIGNUP
+              </button>
+            </div>
           </form>
         </div>
       </>
